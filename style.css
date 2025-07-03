@@ -1,0 +1,319 @@
+/* Tổng thể */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1300px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    background: linear-gradient(135deg, #149144, #00581d);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    padding: 20px 15px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Các thành phần nhập liệu chung */
+input[type="file"],
+input[type="text"] {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 120px;
+    height: 50px;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 3px solid #008d23;
+    background-color: #ffffff;
+    color: rgb(38, 38, 38);
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s, color 0.2s;
+}
+
+button:hover {
+    background-color: #54d45b;
+    color: rgb(255, 255, 255);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Khu vực chọn cây */
+.selection-controls {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    /* Căn chỉnh các mục theo đáy */
+}
+
+.input-group {
+    flex: 1;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Menu tùy chỉnh */
+.custom-select-container {
+    position: relative;
+    cursor: pointer;
+}
+
+#custom-select-selected {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: #fff;
+    height: 50px;
+    box-sizing: border-box;
+}
+
+#custom-select-selected::after {
+    content: '▼';
+    margin-left: auto;
+    font-size: 12px;
+}
+
+#custom-select-selected img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+#custom-select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    z-index: 100;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.custom-select-hide {
+    display: none;
+}
+
+.custom-select-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    transition: background-color 0.2s;
+}
+
+.custom-select-option:hover {
+    background-color: #e7f3ff;
+}
+
+.custom-select-option img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Danh sách cây đã sửa */
+#edited-plants-section {
+    background-color: #e7fff0;
+    border: 1px solid #b3ffb8;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+#edited-plants-section h4 {
+    margin-top: 0;
+    color: #009c2a;
+}
+
+#edited-plants-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#edited-plants-list li {
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edited-plant-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Khu vực chỉnh sửa chỉ số */
+#stats-editor {
+    margin-top: 20px;
+}
+
+.stat-group {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.stat-group h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.title-plant-icon {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    margin-right: 10px;
+    object-fit: contain;
+}
+
+.main-stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    align-items: center;
+}
+
+.main-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.main-stat-item label {
+    font-weight: bold;
+}
+
+.main-stat-item input {
+    width: 100px;
+    padding: 8px;
+    text-align: center;
+}
+
+.stat-item {
+    margin-bottom: 15px;
+}
+
+.stat-item label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.stat-item .values-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.stat-item input[type="number"],
+.stat-item input[type="text"] {
+    width: 70px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+input[readonly] {
+    background-color: #e9e9e9;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.level-indicator {
+    position: relative;
+    display: inline-block;
+}
+
+.level-indicator input {
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.level-indicator .level-label {
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: #666;
+    background-color: #eee;
+    padding: 0 3px;
+    border-radius: 3px;
+}
+
+/* === SỬA LỖI BỐ CỤC DẠNG CỘT === */
+.string-values-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Giữ nguyên: Tạo 2 cột */
+    gap: 10px 15px;
+}
+
+.string-values-container .level-indicator input[type="text"] {
+    width: 100%;
+    /* Giữ nguyên: Cho ô input dài ra */
+    box-sizing: border-box;
+}
+
+/* Bỏ đi quy tắc không cần thiết gây lỗi */
+/* .string-values-container .level-indicator {
+    width: 100%; 
+} */
