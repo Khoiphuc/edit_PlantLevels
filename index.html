@@ -9,47 +9,61 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="page-wrapper">
         <h1><img src="https://img.utdstc.com/icon/889/533/8895331dfa5d196b0447dae5849a66c663080e5931a36e3909586fae09d5d238:200"
                 alt="image PvZ2" width="30"> Chỉnh sửa chỉ số cây trồng - PvZ2</h1>
-        <div class="card">
-            <label for="json-file-input">Tải lên tệp <code>PlantLevels.json</code>:</label>
-            <input type="file" id="json-file-input" accept=".json">
-        </div>
 
-        <div class="card" id="editor-section" style="display: none;">
-
-            <div class="selection-controls">
-                <div class="input-group">
-                    <label>Chọn cây: </label>
-                    <div class="custom-select-container">
-                        <div id="custom-select-selected">
-                            <span>--Chọn--</span>
+        <div class="main-content">
+            <div class="container">
+                <div class="card">
+                    <label for="json-file-input">Tải lên tệp <code>PlantLevels.json</code>:</label>
+                    <input type="file" id="json-file-input" accept=".json">
+                </div>
+                <div class="card" id="editor-section" style="display: none;">
+                    <div class="selection-controls">
+                        <div class="input-group">
+                            <label>Chọn cây: </label>
+                            <div class="custom-select-container">
+                                <div id="custom-select-selected">
+                                    <span>--Chọn--</span>
+                                </div>
+                                <div id="custom-select-options" class="custom-select-hide">
+                                </div>
+                            </div>
                         </div>
-                        <div id="custom-select-options" class="custom-select-hide">
+                        <div class="input-group">
+                            <label for="plant-search-input">Tìm kiếm cây:</label>
+                            <input type="text" id="plant-search-input" placeholder="nhập tên">
                         </div>
                     </div>
                 </div>
-                <div class="input-group">
-                    <label for="plant-search-input">Tìm kiếm cây:</label>
-                    <input type="text" id="plant-search-input" placeholder="nhập tên">
+                <div id="edited-plants-section" style="display: none;">
+                    <h4>Các cây đã chỉnh sửa gần đây:</h4>
+                    <ul id="edited-plants-list"></ul>
                 </div>
-
+                <div class="card" id="download-section" style="display: none;">
+                    <p>Sau khi chỉnh sửa xong, hãy nhấn nút bên dưới để tải về tệp <code>PlantLevels.json</code> đã cập
+                        nhật.</p>
+                    <button id="download-btn">Tải về tệp</button>
+                </div>
             </div>
-            <div id="stats-editor"></div>
+            <div class="container_2">
+                <div id="stats-editor"></div>
+            </div>
         </div>
 
-        <div id="edited-plants-section" style="display: none;">
-            <h4>Các cây đã chỉnh sửa gần đây:</h4>
-            <ul id="edited-plants-list"></ul>
-        </div>
-
-        <div class="card" id="download-section" style="display: none;">
-            <p>Sau khi chỉnh sửa xong, hãy nhấn nút bên dưới để tải về tệp <code>PlantLevels.json</code> đã cập
-                nhật.</p>
-            <button id="download-btn">Tải về tệp</button>
+        <div id="modal-overlay" class="is-hidden">
+            <div id="string-stats-modal">
+                <div class="modal-header">
+                    <h3 id="modal-title">Thuộc tính đối tượng</h3>
+                    <button id="modal-close-btn">&times;</button>
+                </div>
+                <div id="modal-content">
+                </div>
+            </div>
         </div>
     </div>
+
     <script src="./script.js"></script>
 </body>
 
