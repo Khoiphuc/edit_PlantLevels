@@ -9,41 +9,35 @@
 </head>
 
 <body>
+    <h1><img src="https://img.utdstc.com/icon/889/533/8895331dfa5d196b0447dae5849a66c663080e5931a36e3909586fae09d5d238:200"
+            alt="image PvZ2" width="30"> Chỉnh sửa chỉ số cây trồng - PvZ2</h1>
     <div class="page-wrapper">
-        <h1><img src="https://img.utdstc.com/icon/889/533/8895331dfa5d196b0447dae5849a66c663080e5931a36e3909586fae09d5d238:200"
-                alt="image PvZ2" width="30"> Chỉnh sửa chỉ số cây trồng - PvZ2</h1>
-
         <div class="main-content">
             <div class="container">
                 <div class="card">
-                    <label for="json-file-input">Tải lên tệp <code>PlantLevels.json</code>:</label>
-                    <input type="file" id="json-file-input" accept=".json">
+                    <p><strong>Tải lên tệp <code>PlantLevels.json</code></strong></p>
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="json-file-input" accept=".json">
+                        <label for="json-file-input" class="file-upload-button">Chọn tệp</label>
+                        <span id="file-name-display">Chưa tải tệp</span>
+                    </div>
                 </div>
                 <div class="card" id="editor-section" style="display: none;">
-                    <div class="selection-controls">
-                        <div class="input-group">
-                            <label>Chọn cây: </label>
-                            <div class="custom-select-container">
-                                <div id="custom-select-selected">
-                                    <span>--Chọn--</span>
-                                </div>
-                                <div id="custom-select-options" class="custom-select-hide">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label for="plant-search-input">Tìm kiếm cây:</label>
-                            <input type="text" id="plant-search-input" placeholder="nhập tên">
+                    <label><strong>Chọn cây cần chỉnh sửa</strong></label>
+                    <div id="plant-selector-trigger" class="selector-trigger">
+                        <div id="selected-plant-display">
+                            <span>-- Bấm để chọn cây --</span>
                         </div>
                     </div>
                 </div>
+
                 <div id="edited-plants-section" style="display: none;">
                     <h4>Các cây đã chỉnh sửa gần đây:</h4>
                     <ul id="edited-plants-list"></ul>
                 </div>
+
                 <div class="card" id="download-section" style="display: none;">
-                    <p>Sau khi chỉnh sửa xong, hãy nhấn nút bên dưới để tải về tệp <code>PlantLevels.json</code> đã cập
-                        nhật.</p>
+                    <p>Sau khi chỉnh sửa xong, hãy nhấn nút bên dưới để tải về.</p>
                     <button id="download-btn">Tải về tệp</button>
                 </div>
             </div>
@@ -52,14 +46,26 @@
             </div>
         </div>
 
-        <div id="modal-overlay" class="is-hidden">
-            <div id="string-stats-modal">
+        <div id="plant-select-modal-overlay" class="modal-overlay is-hidden">
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <h3>Chọn cây trồng</h3>
+                    <button class="modal-close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="modal-plant-search" placeholder="Tìm kiếm cây...">
+                    <div id="modal-plant-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="string-stats-modal-overlay" class="modal-overlay is-hidden">
+            <div class="modal-dialog">
                 <div class="modal-header">
                     <h3 id="modal-title">Thuộc tính đối tượng</h3>
-                    <button id="modal-close-btn">&times;</button>
+                    <button class="modal-close-btn">&times;</button>
                 </div>
-                <div id="modal-content">
-                </div>
+                <div id="modal-content"></div>
             </div>
         </div>
     </div>
